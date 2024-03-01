@@ -1,15 +1,46 @@
-function hasTargetSum(array, target) {
-  // Write your algorithm here
+function hasTargetSum(array, target){
+  const seenNumbers= {};
+
+  for (const number of array){
+    const complement = target - number;
+    if(seenNumbers[complement])return true;seenNumbers[number] = true;
+  }
+  return false;
 }
 
+/*
+Create an empty object=> seenNumbers
+Iterate through every item in the array.
+Create the complement
+If any item matches the complement, return true, otherwise push the item to the empty object
+
+ */
+
+
+
+/*function hasTargetSum(array, target) {
+  for(let i=0; i < array.length ; i++){
+    const complement = target - array[i];
+
+    for(j= i+1; j< array.length; j++){
+      if(complement === array[j]){
+        return true
+      }
+    }
+  }
+  return false
+}
+*/
 /* 
-  Write the Big O time complexity of your function here
+  O(n^2)=>Quadratic(Because of the nested iteration)
 */
 
 /* 
-  Add your pseudocode here
-*/
 
+  compare the first index of the array and add all the other indexes one by one
+eg: [1,2,3,4,5]
+  begin with 1=>(do 1+2=> compare it to targetSum. If true return true and exit. If false, go to the next and repeat the same. )
+*/
 /*
   Add written explanation of your solution here
 */
